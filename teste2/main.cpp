@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// FunÁ„o para criar um novo cliente
+// Fun√ß√£o para criar um novo cliente
 void createCliente(MYSQL* conn) {
     string cpf, nome, numero;
     cout << "\n=== CREATE Cliente ===\n";
@@ -11,8 +11,8 @@ void createCliente(MYSQL* conn) {
     cin >> cpf;
     cout << "Digite o Nome: ";
     cin.ignore(); // Limpa o buffer do teclado
-    getline(cin, nome); // LÍ uma string com espaÁos
-    cout << "Digite o N˙mero: ";
+    getline(cin, nome); // L√™ uma string com espa√ßos
+    cout << "Digite o N√∫mero: ";
     cin >> numero;
 
     string query = "INSERT INTO Cliente (cpf, nome, numero) VALUES ('" + cpf + "', '" + nome + "', '" + numero + "')";
@@ -23,7 +23,7 @@ void createCliente(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para listar todos os clientes
+// Fun√ß√£o para listar todos os clientes
 void readClientes(MYSQL* conn) {
     cout << "\n=== READ Clientes ===\n";
     if (mysql_query(conn, "SELECT * FROM Cliente")) {
@@ -38,7 +38,7 @@ void readClientes(MYSQL* conn) {
     }
 
     MYSQL_ROW row;
-    cout << "ID\tCPF\t\tNome\t\tN˙mero" << endl;
+    cout << "ID\tCPF\t\tNome\t\tN√∫mero" << endl;
     cout << "----------------------------------------------------" << endl;
     while ((row = mysql_fetch_row(result))) {
         cout << row[0] << "\t" << row[1] << "\t" << row[2] << "\t" << row[3] << endl;
@@ -47,7 +47,7 @@ void readClientes(MYSQL* conn) {
     mysql_free_result(result);
 }
 
-// FunÁ„o para atualizar um cliente
+// Fun√ß√£o para atualizar um cliente
 void updateCliente(MYSQL* conn) {
     int id;
     string nome, numero;
@@ -57,7 +57,7 @@ void updateCliente(MYSQL* conn) {
     cout << "Digite o novo Nome: ";
     cin.ignore();
     getline(cin, nome);
-    cout << "Digite o novo N˙mero: ";
+    cout << "Digite o novo N√∫mero: ";
     cin >> numero;
 
     string query = "UPDATE Cliente SET nome = '" + nome + "', numero = '" + numero + "' WHERE id = " + to_string(id);
@@ -68,7 +68,7 @@ void updateCliente(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para deletar um cliente
+// Fun√ß√£o para deletar um cliente
 void deleteCliente(MYSQL* conn) {
     int id;
     cout << "\n=== DELETE Cliente ===\n";
@@ -83,7 +83,7 @@ void deleteCliente(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para criar um novo corretor
+// Fun√ß√£o para criar um novo corretor
 void createCorretor(MYSQL* conn) {
     string cpf, nome, numero;
     float salario;  // Novo atributo salario
@@ -96,8 +96,8 @@ void createCorretor(MYSQL* conn) {
     getline(cin, nome);
     cout << "Digite o Telefone: ";
     cin >> numero;
-    cout << "Digite o Sal·rio: ";
-    cin >> salario;  // Recebe o valor do sal·rio
+    cout << "Digite o Sal√°rio: ";
+    cin >> salario;  // Recebe o valor do sal√°rio
 
     // Atualiza a query SQL para incluir o campo salario
     string query = "INSERT INTO Corretor (cpf, nome, numero, salario) VALUES ('" + cpf + "', '" + nome + "', '" + numero + "', " + to_string(salario) + ")";
@@ -109,7 +109,7 @@ void createCorretor(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para listar todos os corretores
+// Fun√ß√£o para listar todos os corretores
 void readCorretores(MYSQL* conn) {
     cout << "\n=== READ Corretores ===\n";
     if (mysql_query(conn, "SELECT * FROM Corretor")) {
@@ -133,7 +133,7 @@ void readCorretores(MYSQL* conn) {
     mysql_free_result(result);
 }
 
-// FunÁ„o para atualizar um corretor
+// Fun√ß√£o para atualizar um corretor
 void updateCorretor(MYSQL* conn) {
     int id;
     string cpf, nome, numero;
@@ -149,8 +149,8 @@ void updateCorretor(MYSQL* conn) {
     getline(cin, nome);
     cout << "Digite o novo Telefone: ";
     cin >> numero;
-    cout << "Digite o novo Sal·rio: ";
-    cin >> salario;  // Recebe o novo valor do sal·rio
+    cout << "Digite o novo Sal√°rio: ";
+    cin >> salario;  // Recebe o novo valor do sal√°rio
 
     // Atualiza a query SQL para incluir o campo salario
     string query = "UPDATE Corretor SET cpf = '" + cpf + "', nome = '" + nome + "', numero = '" + numero + "', salario = " + to_string(salario) + " WHERE id = " + to_string(id);
@@ -162,7 +162,7 @@ void updateCorretor(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para deletar um corretor
+// Fun√ß√£o para deletar um corretor
 void deleteCorretor(MYSQL* conn) {
     int id;
     cout << "\n=== DELETE Corretor ===\n";
@@ -177,13 +177,13 @@ void deleteCorretor(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para criar uma nova propriedade
+// Fun√ß√£o para criar uma nova propriedade
 void createPropriedade(MYSQL* conn) {
     string endereco, tipo;
     float tamanho;  // Novo atributo tamanho
 
     cout << "\n=== CREATE Propriedade ===\n";
-    cout << "Digite o EndereÁo: ";
+    cout << "Digite o Endere√ßo: ";
     cin.ignore(); // Limpa o buffer do teclado
     getline(cin, endereco);
     cout << "Digite o Tipo: ";
@@ -201,7 +201,7 @@ void createPropriedade(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para listar todas as propriedades
+// Fun√ß√£o para listar todas as propriedades
 void readPropriedades(MYSQL* conn) {
     cout << "\n=== READ Propriedades ===\n";
     if (mysql_query(conn, "SELECT * FROM Propriedade")) {
@@ -216,7 +216,7 @@ void readPropriedades(MYSQL* conn) {
     }
 
     MYSQL_ROW row;
-    cout << "ID\tEndereÁo\t\tTipo\t\tTamanho" << endl;
+    cout << "ID\tEndere√ßo\t\tTipo\t\tTamanho" << endl;
     cout << "------------------------------------------------------------" << endl;
     while ((row = mysql_fetch_row(result))) {
         cout << row[0] << "\t" << row[1] << "\t" << row[2] << "\t" << row[3] << endl;  // Exibe o campo tamanho
@@ -225,7 +225,7 @@ void readPropriedades(MYSQL* conn) {
     mysql_free_result(result);
 }
 
-// FunÁ„o para atualizar uma propriedade
+// Fun√ß√£o para atualizar uma propriedade
 void updatePropriedade(MYSQL* conn) {
     int id;
     string endereco, tipo;
@@ -234,7 +234,7 @@ void updatePropriedade(MYSQL* conn) {
     cout << "\n=== UPDATE Propriedade ===\n";
     cout << "Digite o ID da propriedade que deseja atualizar: ";
     cin >> id;
-    cout << "Digite o novo EndereÁo: ";
+    cout << "Digite o novo Endere√ßo: ";
     cin.ignore();
     getline(cin, endereco);
     cout << "Digite o novo Tipo: ";
@@ -252,7 +252,7 @@ void updatePropriedade(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para deletar uma propriedade
+// Fun√ß√£o para deletar uma propriedade
 void deletePropriedade(MYSQL* conn) {
     int id;
     cout << "\n=== DELETE Propriedade ===\n";
@@ -267,8 +267,8 @@ void deletePropriedade(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para criar um novo contrato
-// FunÁ„o para criar um novo contrato
+// Fun√ß√£o para criar um novo contrato
+// Fun√ß√£o para criar um novo contrato
 void createContrato(MYSQL* conn) {
     int id_comprador, id_propriedade, id_corretor, id_vendedor;  // Atributos
     float valor;  // Novo atributo valor
@@ -299,7 +299,7 @@ void createContrato(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para listar todos os contratos
+// Fun√ß√£o para listar todos os contratos
 void readContratos(MYSQL* conn) {
     cout << "\n=== READ Contratos ===\n";
 
@@ -328,7 +328,7 @@ void readContratos(MYSQL* conn) {
 }
 
 
-// FunÁ„o para atualizar um contrato
+// Fun√ß√£o para atualizar um contrato
 void updateContrato(MYSQL* conn) {
     int id, id_comprador, id_propriedade, id_corretor, id_vendedor;  // Atributos
     float valor;  // Novo atributo valor
@@ -361,7 +361,7 @@ void updateContrato(MYSQL* conn) {
     }
 }
 
-// FunÁ„o para deletar um contrato
+// Fun√ß√£o para deletar um contrato
 void deleteContrato(MYSQL* conn) {
     int id;
     cout << "\n=== DELETE Contrato ===\n";
@@ -385,12 +385,12 @@ int main() {
     }
 
     // Conecta ao banco de dados
-    connect = mysql_real_connect(connect, "127.0.0.1", "root", "Ez2004ct", "Imobiliaria", 3306, NULL, 0);
+    connect = mysql_real_connect(connect, "127.0.0.1", "root", "senha", "Imobiliaria", 3306, NULL, 0);
     if (!connect) {
         cout << "Erro ao conectar ao banco de dados: " << mysql_error(connect) << endl;
         return 1;
     }
-    cout << "Conex„o com o banco de dados estabelecida!" << endl;
+    cout << "Conex√£o com o banco de dados estabelecida!" << endl;
 
     // Menu interativo para CRUD
     int opcao;
@@ -402,7 +402,7 @@ int main() {
         cout << "3. CRUD Propriedade\n";
         cout << "4. CRUD Contrato\n";
         cout << "5. Sair\n";
-        cout << "Escolha uma opÁ„o: ";
+        cout << "Escolha uma op√ß√£o: ";
         cin >> opcao;
 
         switch (opcao) {
@@ -434,7 +434,7 @@ int main() {
                             cout << "Saindo..." << endl;
                             break;
                         default:
-                            cout << "OpÁ„o inv·lida. Tente novamente." << endl;
+                            cout << "Op√ß√£o inv√°lida. Tente novamente." << endl;
                     }
                 } while (opcao2 != 5);
                 break;
@@ -466,7 +466,7 @@ int main() {
                             cout << "Saindo..." << endl;
                             break;
                         default:
-                            cout << "OpÁ„o inv·lida. Tente novamente." << endl;
+                            cout << "Op√ß√£o inv√°lida. Tente novamente." << endl;
                     }
                 } while (opcao2 != 5);
                 break;
@@ -498,7 +498,7 @@ int main() {
                             cout << "Saindo..." << endl;
                             break;
                         default:
-                            cout << "OpÁ„o inv·lida. Tente novamente." << endl;
+                            cout << "Op√ß√£o inv√°lida. Tente novamente." << endl;
                     }
                 } while (opcao2 != 5);
                 break;
@@ -530,7 +530,7 @@ int main() {
                             cout << "Saindo..." << endl;
                             break;
                         default:
-                            cout << "OpÁ„o inv·lida. Tente novamente." << endl;
+                            cout << "Op√ß√£o inv√°lida. Tente novamente." << endl;
                     }
                 } while (opcao2 != 5);
                 break;
@@ -538,11 +538,11 @@ int main() {
                 cout << "Saindo..." << endl;
                 break;
             default:
-                cout << "OpÁ„o inv·lida. Tente novamente." << endl;
+                cout << "Op√ß√£o inv√°lida. Tente novamente." << endl;
         }
     } while (opcao != 5);
 
-    // Fecha a conex„o
+    // Fecha a conex√£o
     mysql_close(connect);
     return 0;
 }
